@@ -1,70 +1,110 @@
-# Stock Price Prediction using Keras LSTM and Prophet
+# 📈 Stock Price Prediction using Keras and Other Machine Learning Models
 
-## Overview
+## 🔍 Overview
 
-This project aims to predict the future stock prices of a given company using two popular time series forecasting techniques: Keras LSTM (Long Short-Term Memory) and Prophet by Facebook. The project uses historical stock data to train the models and evaluate their performance.
+This project focuses on predicting future stock prices of publicly traded companies using four popular and effective time series forecasting models:
 
-## Files and Folders
+- **Keras LSTM (Long Short-Term Memory)**
+- **Facebook Prophet**
+- **Auto ARIMA**
+- **Hybrid Prophet** (combination of Prophet, ARIMA)
 
-* `webApp.py`: The main application file that uses Streamlit to create a web interface for users to input stock IDs and view predicted stock prices.
-* `App.py`: Another application file that uses Streamlit to create a web interface for users to input stock IDs and view predicted stock prices (similar to `webApp.py`).
+These models are implemented using Python and are made accessible through a user-friendly web interface built with **Streamlit**. Users can enter stock ticker symbols (e.g., AAPL, TSLA) to visualize historical data, forecast future prices, and compare the performance of each model.
 
+---
 
-## Libraries and Frameworks
+## 📁 Files and Folder Structure
 
-* `Keras`: A popular deep learning library used to build the LSTM model.
-* `Prophet`: A open-source software for forecasting time series data developed by Facebook.
-* `Streamlit`: A Python library used to create web interfaces for data science applications.
-* `Pandas`: A library used for data manipulation and analysis.
-* `NumPy`: A library used for numerical computations.
-* `Matplotlib` and `Plotly`: Libraries used for data visualization.
-* `yfinance`: A library used to download historical stock data from Yahoo Finance.
+- `webApp.py`: Main Streamlit web app integrating all models.
+- `App.py`: An alternative Streamlit app, possibly with different styling or features.
+- `aarima.py`: Streamlit app focused on Auto ARIMA and Hybrid Prophet models.
 
-## How it Works
+---
 
-1. **Data Collection**: Historical stock data is collected using `yfinance` from Yahoo Finance.
-2. **Data Preprocessing**: The collected data is preprocessed using `Pandas` and `NumPy` to prepare it for modeling.
-3. **Modeling**: Two models are built using `Keras` LSTM and `Prophet` to forecast future stock prices.
-4. **Model Evaluation**: The performance of both models is evaluated using metrics such as mean absolute error (MAE) and mean squared error (MSE).
-5. **Web Interface**: A web interface is created using `Streamlit` to allow users to input stock IDs and view predicted stock prices.
+## 📚 Libraries and Frameworks Used
 
-## Keras LSTM Model
+- **Keras** - Deep learning model (LSTM)
+- **Prophet** - Time series forecasting library from Facebook
+- **pmdarima (Auto ARIMA)** - Automatic ARIMA modeling
+- **Hybrid Prophet** - Combines Prophet with other models (ARIMA, LSTM)
+- **Streamlit** - Web interface framework
+- **Pandas & NumPy** - Data handling and numerical computation
+- **Matplotlib & Plotly** - Data visualization
+- **yfinance** - Fetch historical stock data from Yahoo Finance
 
-* The LSTM model is built using `Keras` with the following architecture:
-    + Input layer: 1 neuron with a input shape of (1, 100) (100 time steps)
-    + LSTM layer: 50 neurons with a return_sequences parameter set to True
-    + Dense layer: 1 neuron with a linear activation function
-* The model is trained using the `adam` optimizer and `mean_squared_error` loss function.
-* The model is evaluated using the `mean_absolute_error` and `mean_squared_error` metrics.
+---
 
-## Prophet Model
+## ⚙️ How It Works
 
-* The Prophet model is built using the `Prophet` library with the following parameters:
-    + Growth: linear
-    + Seasonality: additive
-    + Holidays: None
-* The model is trained using the `fit` method and evaluated using the `make_future_dataframe` and `predict` methods.
+### 1. Data Collection
+- Users input a stock symbol (e.g., MSFT).
+- Historical stock data is downloaded using the `yfinance` API.
 
-## Web Interface
+### 2. Data Preprocessing
+- Missing values handled
+- Time series formatting (e.g., date conversion, sliding windows for LSTM)
+- Scaling of data for LSTM models
 
-* The web interface is created using `Streamlit` with the following features:
-    + Stock ID input field
-    + Predicted stock price chart
-    + Model evaluation metrics (MAE and MSE)
+### 3. Forecasting Models
 
-## Example Use Cases
+#### ✅ Keras LSTM
+- Architecture:
+  - Input shape: (1, 100)
+  - LSTM layer with 50 units
+  - Dense layer with 1 unit (linear activation)
+- Trained with `adam` optimizer and `mean_squared_error` loss
 
-* Predicting future stock prices for a given company
-* Comparing the performance of Keras LSTM and Prophet models
-* Visualizing historical stock data and predicted stock prices
+#### ✅ Facebook Prophet
+- Growth: linear
+- Seasonality: additive
+- Fit using `fit()` and `predict()` methods
 
-## Future Work
+#### ✅ Auto ARIMA
+- Automatically chooses `p`, `d`, `q` parameters
+- Trained using `fit()` and forecasted using `predict()`
 
-* Improving the performance of both models using techniques such as hyperparameter tuning and feature engineering
-* Adding more features to the web interface such as stock news and sentiment analysis
-* Exploring other time series forecasting techniques such as ARIMA and Exponential Smoothing.
+#### ✅ Hybrid Prophet
+- Combines Prophet + ARIMA (+ optional LSTM)
+- Balances strengths of individual models
 
-## Author
-* Sabyasachi Ghosh
-* sabyasachighosh008@gmail.com
-* 7501539881
+### 4. Evaluation
+Models are evaluated using:
+- **Mean Absolute Error (MAE)**
+- **Mean Squared Error (MSE)**
+
+### 5. Streamlit Web Interface
+- Input field for stock ticker
+- Forecast plot from all models
+- Metrics display (MAE, MSE)
+- Optional data download/export
+
+---
+
+## 📈 Example Use Cases
+
+- Forecast stock prices for investment decisions
+- Educational tool for time series model comparison
+- Research and development in stock prediction using hybrid models
+
+---
+
+## 🚀 Future Work
+
+- Hyperparameter tuning for improved accuracy
+- Feature engineering (technical indicators, volume)
+- Sentiment analysis from financial news or social media
+- Model stacking and ensemble learning
+- Real-time prediction updates
+- Enhanced dashboards and visual reports
+
+---
+
+## 👨‍💻 Author
+
+**Sabyasachi Ghosh**  
+📧 [sabyasachighosh008@gmail.com](mailto:sabyasachighosh008@gmail.com)  
+📞 +91 75015 39881
+
+---
+
+> ⭐ _Feel free to fork, star, and contribute to this repository!_
